@@ -1,4 +1,4 @@
-fromblammo
+High Fahsion Log
 ==========
 
-Log (From Blammo)
+High Fahsion Log (For Girls!)
