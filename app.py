@@ -28,14 +28,16 @@ def log():
     else:
         message = request.form['message']
 
+    log_message(app, message)
+    return json.dumps({'response', 'successful log'})
+
+def log_mesage(app_name, message):
     if LOG_TYPE == 'FS':
         log_to_filesystem(app, message)
     elif LOG_TYPE == 'DB':
         log_to_database(app, message)
     else:
         print 'logging to stdout'
-
-    return json.dumps({'response', 'successful log'})
 
 def log_to_database(app_name, message):
     return ""
