@@ -3,10 +3,7 @@ import json
 import logging
 
 app = Flask(__name__)
-
-# config
-LOG_TYPE = 'FS' # FS or DB
-DB_URI = ''
+app.config.from_object('settings.DevelopmentConfig')
 
 @app.route('/')
 def hello():
@@ -19,33 +16,35 @@ def log():
 
     # validate two pieces of data
     if not request.form.get('app'):
-        return json.dumps({'error': 'No App is specified'})
+        return json.dumps({'error': 'No Application is specified'})
     else:
-        app = request.form['app']
+        app_name = request.form['app']
 
     if not request.form.get('message'):
         return json.dumps({'error': 'No Message is specified'})
     else:
         message = request.form['message']
 
-    log_message(app, message)
-    return json.dumps({'response', 'successful log'})
+    log_message(app_name, message)
+    return json.dumps({'response': 'successful log'})
 
-def log_mesage(app_name, message):
-    if LOG_TYPE == 'FS':
-        log_to_filesystem(app, message)
-    elif LOG_TYPE == 'DB':
+def log_message(app_name, message):
+    log_type = app.config['LOG_TYPE']
+    if log_type == 'filesystem':
+        log_to_filesystem(app_name, message)
+    elif log_type == 'database':
         log_to_database(app, message)
     else:
-        print 'logging to stdout'
+        print 'Post request from %s: %s', app_name, message
+
 
 def log_to_database(app_name, message):
     return ""
 
 def log_to_filesystem(app_name, message):
-    logging.basicConfig(filename='highfashion.log', level=logging.INFO)
+    filename = app.config['LOG_FILENAME']
+    logging.basicConfig(filename=filename, level=logging.INFO)
     logging.info('Post request from %s: %s', app_name, message)
 
 if __name__ == '__main__':
-    app.debug = True
     app.run()
