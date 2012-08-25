@@ -1,9 +1,18 @@
 from flask import Flask, request
-import json
+from models import db, Log
 import logging
+import json
 
 app = Flask(__name__)
-app.config.from_object('settings.DevelopmentConfig')
+app.config.from_object('config.DevelopmentConfig')
+
+"""
+    TODO:
+        * use app object for configuration
+        * extract all logging to seperate module
+        * create interface to see what is logged to db
+        * sanitization?
+"""
 
 @app.route('/')
 def hello():
@@ -12,9 +21,7 @@ def hello():
 @app.route('/log', methods=['POST'])
 def log():
 
-    response = ''
-
-    # validate two pieces of data
+    # validate data
     if not request.form.get('app'):
         return json.dumps({'error': 'No Application is specified'})
     else:
@@ -25,6 +32,7 @@ def log():
     else:
         message = request.form['message']
 
+    # log data and message
     log_message(app_name, message)
     return json.dumps({'response': 'successful log'})
 
@@ -33,18 +41,19 @@ def log_message(app_name, message):
     if log_type == 'filesystem':
         log_to_filesystem(app_name, message)
     elif log_type == 'database':
-        log_to_database(app, message)
+        log_to_database(app_name, message)
     else:
-        print 'Post request from %s: %s', app_name, message
-
+        print 'Message logged from %s: %s', app_name, message
 
 def log_to_database(app_name, message):
-    return ""
+    log = Log(app_name, message)
+    db.session.add(log)
+    db.session.commit()
 
 def log_to_filesystem(app_name, message):
     filename = app.config['LOG_FILENAME']
     logging.basicConfig(filename=filename, level=logging.INFO)
-    logging.info('Post request from %s: %s', app_name, message)
+    logging.info('Message logged from %s: %s', app_name, message)
 
 if __name__ == '__main__':
     app.run()
