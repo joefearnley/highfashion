@@ -1,4 +1,4 @@
-High Fahsion Log
+High Fashion Log
 ==========
 
-High Fahsion Log (For Girls!)
+High Fashion Log (For Girls!)
