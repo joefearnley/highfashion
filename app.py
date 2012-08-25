@@ -5,10 +5,12 @@ import json
 
 app = Flask(__name__)
 app.config.from_object('config.DevelopmentConfig')
+db.init_app(app)
 
 """
     TODO:
-        * use app object for configuration
+        * use app object for log configuration
+        * or move config into its own directory
         * extract all logging to seperate module
         * create interface to see what is logged to db
         * sanitization?
@@ -33,27 +35,35 @@ def log():
         message = request.form['message']
 
     # log data and message
-    log_message(app_name, message)
+    #log_message(app_name, message)
+    log = LogHandler(app.config['LOG_TYPE'], app_name, message)
+    log.log_message()
     return json.dumps({'response': 'successful log'})
 
-def log_message(app_name, message):
-    log_type = app.config['LOG_TYPE']
-    if log_type == 'filesystem':
-        log_to_filesystem(app_name, message)
-    elif log_type == 'database':
-        log_to_database(app_name, message)
-    else:
-        print 'Message logged from %s: %s', app_name, message
+class LogHandler(object):
+    def __init__(self, log_type, app_name, message):
+        self.log_type = log_type
+        self.app_name = app_name
+        self.message = message
+        # self.file_name = filename??
 
-def log_to_database(app_name, message):
-    log = Log(app_name, message)
-    db.session.add(log)
-    db.session.commit()
+    def log_message(self):
+        if self.log_type == 'filesystem':
+            self.log_to_filesystem()
+        elif self.log_type == 'database':
+            self.log_to_database()
+        else:
+            print 'Message logged from %s: %s', app_name, message
 
-def log_to_filesystem(app_name, message):
-    filename = app.config['LOG_FILENAME']
-    logging.basicConfig(filename=filename, level=logging.INFO)
-    logging.info('Message logged from %s: %s', app_name, message)
+    def log_to_database(self):
+        log = Log(self.app_name, self.message)
+        db.session.add(log)
+        db.session.commit()
+
+    def log_to_filesystem(self):
+        filename = app.config['LOG_FILENAME']
+        logging.basicConfig(filename=filename, level=logging.INFO)
+        logging.info('Message logged from %s: %s', app_name, message)
 
 if __name__ == '__main__':
     app.run()

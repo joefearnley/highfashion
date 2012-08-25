@@ -1,11 +1,7 @@
-#from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from datetime import datetime
-from app import app
 
-#app = Flask(__name__)
-#app.config.from_object('config.DevelopmentConfig')
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 
 class Log(db.Model):
     id = db.Column(db.Integer, primary_key=True)
