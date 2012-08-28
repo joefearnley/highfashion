@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<table class="table table-striped table-bordered">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th>Application</th>
+      <th>Message</th>
+      <th>Time Posted</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for message in messages %}
+    <tr>
+      <td>{{ message.app_name }}</td>
+      <td>{{ message.message }}</td>
+      <td>{{ message.posted }}</td>
+    </tr>
+  {% else %}
+      <tr>
+        <td>No Message Found</td>
+      </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
