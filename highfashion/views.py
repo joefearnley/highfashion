@@ -1,15 +1,16 @@
-from flask import request
-from utils import LogHandler
+from flask import request, render_template
+from utils import MessageHandler
+from models import Message
 from highfashion import app
 import json
 
-@app.route('/')
-def hello():
+@app.route('/', methods=['GET'])
+def index():
     # TODO:
-    # check to see if logging to database.
-    # query for records
-    # render template
-    return 'Nothing to see here....'
+    # use sqlalchemy to create database and tables.....
+    #
+    messages = Message.query.all()
+    return render_template('show_messages.html', messages=messages)
 
 @app.route('/log', methods=['POST'])
 def log():
@@ -23,6 +24,6 @@ def log():
     else:
         message = request.form['message']
 
-    log = LogHandler(app.config['LOG_TYPE'], app_name, message)
-    log.log_message()
+    message_handler = MessageHandler(app.config['LOG_TYPE'], app_name, message)
+    message_handler.log_message()
     return json.dumps({'response': 'successful log'})

@@ -10,5 +10,5 @@ class ProductionConfig(Config):
 class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = 'mysql://highfashion:password@localhost/highfashion'
-    LOG_TYPE = 'filesystem'
+    LOG_TYPE = 'database'
     LOG_FILENAME = 'highfashion.log'

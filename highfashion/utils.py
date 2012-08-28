@@ -1,11 +1,11 @@
 from models import db
-from models import Log
+from models import Message
 import logging
 from highfashion import app
 
 db.init_app(app)
 
-class LogHandler(object):
+class MessageHandler(object):
     def __init__(self, log_type, app_name, message):
         self.log_type = log_type
         self.app_name = app_name
@@ -21,7 +21,7 @@ class LogHandler(object):
             print 'Message logged from %s: %s', app_name, message
 
     def log_to_database(self):
-        log = Log(self.app_name, self.message)
+        log = Message(self.app_name, self.message)
         db.session.add(log)
         db.session.commit()
 
