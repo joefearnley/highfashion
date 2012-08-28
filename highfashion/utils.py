@@ -10,7 +10,6 @@ class MessageHandler(object):
         self.log_type = log_type
         self.app_name = app_name
         self.message = message
-        # self.file_name = filename??
 
     def log_message(self):
         if self.log_type == 'filesystem':
