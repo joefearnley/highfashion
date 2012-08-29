@@ -1,10 +1,37 @@
-<!doctype html>
-<head>
-<title>High Fashion Log</title>
-</head>
-<html>
-<div class=content>
-    <h1>High Fashion Log</h1>
-    {% block body %}{% endblock %}
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>High Fashion Log</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <style>
+      body { padding-top: 60px; }
+    </style>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">High Fashion Log</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3>Messages</h3>
+      {% block body %}{% endblock %}
+    </div>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  </body>
 </html>

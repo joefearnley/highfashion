@@ -9,7 +9,7 @@ def index():
     # TODO:
     # use sqlalchemy to create database and tables.....
     #
-    messages = Message.query.all()
+    messages = Message.query.order_by(Message.id.desc())
     return render_template('show_messages.html', messages=messages)
 
 @app.route('/log', methods=['POST'])
