@@ -38,14 +38,9 @@ API
 **http://yourdomain.com/log**
 
 <table>
-  <tr>
-    <td><strong>Parameter</strong></th>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>app</td><td>The name of the application logging the message.</td>
-    <td>message</td><td>The message to be logged.</td> 
-  </tr>
+  <tr><th colspan="2"><strong>Parameter</strong></th></tr>
+  <tr><td>app</td><td>The name of the application logging the message.</td></tr>
+  <tr><td>message</td><td>The message to be logged.</td></tr>
 </table>
 
 License
