@@ -1,4 +1,4 @@
-High Fashion Log (all new for girl!)
+High Fashion Log (all new for girls!) (From Blammo!)
 ==========
 
 High Fashion Log is server for logging remotely via HTTP. It consists of a REST API and a web-based UI if you configure it accordingly.
