@@ -1,12 +1,12 @@
-High Fashion Log (all new for girls!) (From Blammo!)
+Highfashion Log (all new for girls!) (From Blammo!)
 ==========
 
-High Fashion Log is server for logging messages remotely via HTTP. It consists of a REST API and a web-based UI if you configure it accordingly.
+Highfashion is a server for logging messages remotely via HTTP. It consists of a REST API and a web UI if configured accordingly.
 
 Dependencies
 -----------
 I'm not sure. I starting building this a while ago and started with
-Flask via pip as I think it installs most of these pacakges. Here is my
+Flask via pip as I think it installs most the pacakges below. Here is my
 pip freeze output for the virtual environment I used for development: 
 
     Flask==0.9
@@ -20,25 +20,37 @@ pip freeze output for the virtual environment I used for development:
 
 Configuration
 -----------
-You can config highfashion to log one of two ways. Either a database or
+You can config highfashion to log messages one of two ways. Either a database or
 using python's standard logging library. If the application is not
-configured to use either of these, it just prints to stdout. I choose to
-used the configuration method suggested in the Flask docs for here:
+configured to use either of these, it just prints to stdout. I choose the application configuration method suggested in the Flask docs for here:
 
 [http://flask.pocoo.org/docs/config/](http://flask.pocoo.org/docs/config/)
 
-* To messages to the appropriate place, see and/or edit the `/highfashion/config.py` file (class) accordingly.
+* To log messages to the appropriate place, see and edit the `/highfashion/config.py` file (class) accordingly.
 * Then edit the `/highfashion/__init.py__` file with the correct config
   class you want to use.
 
 API
 -----------
+The main part of the application is a REST API. If required parameters
+are not met, a error string will be returned (e.g.):
+
+    {
+        'error': 'No [parameter] is specified'
+    }
+
+When a HTTP POST is sucessful, a response in the following format will
+be returned:
+
+    {
+        "response": "successful log"
+    }
 
 ###Endpoints
-**http://yourdomain.com/log**
+**POST /log**
 
 <table>
-  <tr><th><strong>Parameter</strong></th><th>&nbsp;</th></tr>
+  <tr><th><strong>Parameters</strong></th><th>&nbsp;</th></tr>
   <tr><td>app</td><td>The name of the application logging the message.</td></tr>
   <tr><td>message</td><td>The message to be logged.</td></tr>
 </table>
