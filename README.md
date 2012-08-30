@@ -34,17 +34,19 @@ used the configuration method suggested in the Flask docs for here:
 API
 -----------
 
-<table>
-<th>Endpoint</th>
-<th>Description</th>
-<tr>
-<td>/log</td>
-<td>This endpoint takes in two parameters:</td>
-</tr>
-</table>
+###Endpoints
+**http://youdomain.com/log**
 
-* app: The name of the application logging the message
-* message: The message itself. 
+<table>
+  <tr>
+    <th>Parameter</th>
+    <th>&nbsp;</th>
+  </tr>
+  <tr>
+    <td>app</td><td>The name of the application logging the message.</td>
+    <td>message</td><td>The message to be logged.</td> 
+  </tr>
+</table>
 
 License
 -----------
