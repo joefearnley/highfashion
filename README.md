@@ -35,13 +35,10 @@ API
 -----------
 
 <table>
+<th>Endpoint</th>
+<th>Description</th>
 <tr>
-<td>#####GET /</td>
-<td>The main index of the application. If you configure it to use a database
-to log messages, they will be displayed here.</td>
-
-<tr>
-<td>#####POST /log</td>
+<td>/log</td>
 <td>This endpoint takes in two parameters:</td>
 </tr>
 </table>
