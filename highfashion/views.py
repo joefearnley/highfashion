@@ -6,9 +6,6 @@ import json
 
 @app.route('/', methods=['GET'])
 def index():
-    # TODO:
-    # use sqlalchemy to create database and tables.....
-    #
     messages = Message.query.order_by(Message.id.desc())
     return render_template('show_messages.html', messages=messages)
 
