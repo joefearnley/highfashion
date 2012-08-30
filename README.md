@@ -28,17 +28,17 @@ used the configuration method suggested in the Flask docs for here:
 [http://flask.pocoo.org/docs/config/](http://flask.pocoo.org/docs/config/)
 
 * To messages to the appropriate place, see and/or edit the `/highfashion/config.py` file (class) accordingly.
-* Then edit the `/highfashion/__init.py__ file with the correct config
+* Then edit the `/highfashion/__init.py__` file with the correct config
   class you want to use.
 
 API
 -----------
 
-####GET / 
+#####GET / 
 The main index of the application. If you configure it to use a database
 to log messages, they will be displayed here.
 
-####POST /log
+#####POST /log
 
 
 License
