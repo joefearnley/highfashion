@@ -39,7 +39,7 @@ are not met, a error string will be returned (e.g.):
         'error': 'No [parameter] is specified'
     }
 
-When a HTTP POST is sucessful, a response in the following format will
+When a HTTP POST is successful, a response in the following format will
 be returned:
 
     {
