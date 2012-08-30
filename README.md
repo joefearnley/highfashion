@@ -39,12 +39,12 @@ API
 
 <table>
   <tr>
-    <th>Parameter</th>
+    <td>**Parameter**</th>
     <th>&nbsp;</th>
   </tr>
   <tr>
-    <td>app</td><td>The name of the application logging the message.</td>
-    <td>message</td><td>The message to be logged.</td> 
+    <td>**app**</td><td>The name of the application logging the message.</td>
+    <td>**message**</td><td>The message to be logged.</td> 
   </tr>
 </table>
 
