@@ -1,6 +1,6 @@
 class Config(object):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = '' # dbtype://user@localhost/foo
+    SQLALCHEMY_DATABASE_URI = '' # dbtype://user@localhost/dbname
     LOG_TYPE = ''                # filesystem or database
     LOG_FILE_NAME = ''           # path/to/highfashion.log
 
