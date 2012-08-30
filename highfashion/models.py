@@ -7,7 +7,7 @@ class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     app_name = db.Column(db.String(50))
     message = db.Column(db.String(250))
-    posted = db.DateTime()
+    posted = db.Column(db.DateTime)
 
     def __init__(self, app, message):
         self.app_name = app
