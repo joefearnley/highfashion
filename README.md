@@ -7,9 +7,8 @@ Dependencies
 -----------
 I'm not sure. I starting building this a while ago and started with
 Flask via pip as I think it installs most of these pacakges. Here is my
-pip freeze output: 
+pip freeze output for the virtual environment I used for development: 
 
-    you@yourmachine>pip freeze
     Flask==0.9
     Flask-SQLAlchemy==0.16
     Jinja2==2.6
