@@ -34,11 +34,11 @@ used the configuration method suggested in the Flask docs for here:
 API
 -----------
 
-##GET / 
+####GET / 
 The main index of the application. If you configure it to use a database
 to log messages, they will be displayed here.
 
-##POST /log
+####POST /log
 
 
 License
