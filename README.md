@@ -55,6 +55,11 @@ be returned:
   <tr><td>message</td><td>The message to be logged.</td></tr>
 </table>
 
+###TODO
+* write tests
+* update bootstrap
+* convert front end to backbone?
+
 License
 -----------
 Do what ever you want with it. I don't give a shit.
